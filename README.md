@@ -2,6 +2,8 @@
 Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven. 
 [GitHub repo](https://github.com/t4skforce/jenkins-ssl)
 
+[![](https://badge.imagelayers.io/t4skforce/jenkins-ssl:latest.svg)](https://imagelayers.io/?images=t4skforce/jenkins-ssl:latest 'Get your own badge on imagelayers.io')
+
 # About the Container
 
 This build is based on [jenkins:latest](https://hub.docker.com/_/jenkins/) with added features:
