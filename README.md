@@ -37,7 +37,7 @@ docker stop jenkins-master
 # remove container
 docker rm jenkins-master
 # start with new base image
-docker run --name jenkins-master -p 443:8443 -p 50000:50000 -v /your/home:/var/jenkins_home t4skforce/jenkins-ssl:latest
+docker run --name jenkins-master -d -p 443:8443 -p 50000:50000 -v /your/home:/var/jenkins_home t4skforce/jenkins-ssl:latest
 ```
 # Autostart
 To enable Jankins to start at system-startup we need to create a systemd service file `vim /lib/systemd/system/jenkins.service`:
