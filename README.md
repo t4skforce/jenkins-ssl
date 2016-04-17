@@ -29,7 +29,6 @@ Then jenkins-master container has the volume (please do read about docker volume
 
 # Upgrade
 ```bash
-#!/bin/bash
 # download updates
 docker pull t4skforce/jenkins-ssl:latest
 # stop current running image
@@ -39,7 +38,8 @@ docker rm jenkins-master
 # start with new base image
 docker run --name jenkins-master -d -p 443:8443 -p 50000:50000 -v /your/home:/var/jenkins_home t4skforce/jenkins-ssl:latest
 ```
-# Autostart
+
+# <a name="autostart"></a>Autostart
 To enable Jankins to start at system-startup we need to create a systemd service file `vim /lib/systemd/system/jenkins.service`:
 
 ```ini
@@ -69,6 +69,64 @@ root@jenkins:~# systemctl status jenkins
            └─2642 /usr/bin/docker start -a jenkins-master
 ```
 
+# Auto Upgrade
+Combine all the above and autoupgrade the container at defined times. This requires you to at least setup [Autostart](#autostart).
+
+First we need to generate your upgrade shell script `vim /root/jenkins_upgrade.sh`:
+
+```bash
+#!/bin/bash
+
+# Jenkins home directory on Server to save all the stuff
+JENKINS_HOME="/your/home"
+
+# download updates
+docker pull t4skforce/jenkins-ssl:latest
+# stop current running image
+docker stop jenkins-master
+# remove container
+docker rm jenkins-master
+# start with new base image
+docker run --name jenkins-master -d -p 443:8443 -p 50000:50000 -v ${JENKINS_HOME}:/var/jenkins_home t4skforce/jenkins-ssl:latest t4skforce/jenkins-ssl:latest
+# stop container
+docker stop jenkins-master
+# start via service
+systemctl start jenkins
+```
+
+Next we need to make this file executable `chmod +x /root/jenkins_upgrade.sh`, and test if the upgrade script works by call ing the shell-script and checking the service status afertwards:
+```bash
+root@jenkins:~# /root/jenkins_upgrade.sh
+root@jenkins:~# systemctl status jenkins
+● jenkins.service - Jenkins-Server
+   Loaded: loaded (/lib/systemd/system/jenkins.service; disabled)
+   Active: active (running) since Sun 2016-04-17 11:42:57 BST; 2s ago
+ Main PID: 2642 (docker)
+   CGroup: /system.slice/jenkins.service
+           └─2642 /usr/bin/docker start -a jenkins-master
+```
+
+Now we need to set the trigger for the upgrade. In this example we just setup a weekly upgrade via crontab scheduled for Sunday at midnight. We add `0 0 * * 7 root /root/jenkins_upgrade.sh` to `/etc/crontab`. The resulting file looks like:
+
+```bash
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user  command
+17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
+25 6    * * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6    * * 7   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+# Jenkins Docker Container Upgrade
+0  0    * * 7   root    /root/upgrade.sh
+#
+```
 
 # Further Information
 
