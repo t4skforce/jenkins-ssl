@@ -62,11 +62,17 @@ To start the service manually call `systemctl start jenkins`. For retreaving the
 ```bash
 root@jenkins:~# systemctl status jenkins
 ● jenkins.service - Jenkins-Server
-   Loaded: loaded (/lib/systemd/system/jenkins.service; disabled)
+   Loaded: loaded (/lib/systemd/system/jenkins.service; enabled)
    Active: active (running) since Sun 2016-04-17 11:42:57 BST; 2s ago
  Main PID: 2642 (docker)
    CGroup: /system.slice/jenkins.service
            └─2642 /usr/bin/docker start -a jenkins-master
+```
+
+And last but not least we need to enable our newly created service via issuing `systemctl enable jenkins`:
+```bash
+root@jenkins:~# systemctl enable jenkins
+Created symlink from /etc/systemd/system/multi-user.target.wants/jenkins.service to /lib/systemd/system/jenkins.service.
 ```
 
 # Auto Upgrade
@@ -99,7 +105,7 @@ Next we need to make this file executable `chmod +x /root/jenkins_upgrade.sh`, a
 root@jenkins:~# /root/jenkins_upgrade.sh
 root@jenkins:~# systemctl status jenkins
 ● jenkins.service - Jenkins-Server
-   Loaded: loaded (/lib/systemd/system/jenkins.service; disabled)
+   Loaded: loaded (/lib/systemd/system/jenkins.service; enabled)
    Active: active (running) since Sun 2016-04-17 11:42:57 BST; 2s ago
  Main PID: 2642 (docker)
    CGroup: /system.slice/jenkins.service
