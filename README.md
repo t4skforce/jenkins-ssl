@@ -94,7 +94,7 @@ docker stop jenkins-master
 systemctl start jenkins
 ```
 
-Next we need to make this file executable `chmod +x /root/jenkins_upgrade.sh`, and test if the upgrade script works by call ing the shell-script and checking the service status afertwards:
+Next we need to make this file executable `chmod +x /root/jenkins_upgrade.sh`, and test if the upgrade script works by calling the shell-script and checking the service status afterwards:
 ```bash
 root@jenkins:~# /root/jenkins_upgrade.sh
 root@jenkins:~# systemctl status jenkins
