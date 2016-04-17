@@ -1,6 +1,6 @@
 # jenkins-ssl
 Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven. 
-[GitHub repo](https://github.com/t4skforce/JenkinsSSLDocker)
+[GitHub repo](https://github.com/t4skforce/jenkins-ssl)
 
 # About the Container
 
