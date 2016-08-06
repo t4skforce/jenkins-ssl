@@ -1,5 +1,5 @@
 # jenkins-ssl
-Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven. 
+Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven.
 [GitHub repo](https://github.com/t4skforce/jenkins-ssl)
 
 [![](https://badge.imagelayers.io/t4skforce/jenkins-ssl:latest.svg)](https://imagelayers.io/?images=t4skforce/jenkins-ssl:latest 'Get your own badge on imagelayers.io')
@@ -7,9 +7,8 @@ Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven.
 # About the Container
 
 This build is based on [jenkins:latest](https://hub.docker.com/_/jenkins/) with added features:
-* HTTPS Secured WEB-UI
+* HTTPS Secured WEB-UI (4096bit - RSA)
 * OpenJDK 8u72
-* Maven 3.3.9
 
 # How to use this image
 `docker run --name jenkins-master -p 443:8443 -p 50000:50000 t4skforce/jenkins-ssl:latest`
@@ -32,7 +31,7 @@ Then jenkins-master container has the volume (please do read about docker volume
 # download updates
 docker pull t4skforce/jenkins-ssl:latest
 # stop current running image
-docker stop jenkins-master 
+docker stop jenkins-master
 # remove container
 docker rm jenkins-master
 # start with new base image
