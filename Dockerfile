@@ -21,4 +21,4 @@ ENV JENKINS_OPTS --httpPort=-1 --httpsPort=8443 --httpsCertificate="$CERT_FOLDER
 EXPOSE 8443
 
 USER ${user}
-ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins_cert.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins_cert.sh"]
