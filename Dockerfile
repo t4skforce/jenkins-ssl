@@ -11,10 +11,7 @@ ARG gid=1000
 USER root
 # update
 RUN apt-get update && apt-get upgrade -y \
-	&& apt-get install -y curl openssl sudo ca-certificates \
-	&& echo "%sudo ALL=(ALL) NOPASSWD:$(whereis keytool | awk '{print $2}')" >> /etc/sudoers \
-	&& echo "%sudo ALL=(ALL) NOPASSWD:$(whereis update-ca-certificates | awk '{print $2}')" >> /etc/sudoers \
-	&& usermod -aG sudo ${user} \
+	&& apt-get install -y curl openssl ca-certificates \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -f /var/cache/apt/*.bin
 	
