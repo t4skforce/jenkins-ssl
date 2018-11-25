@@ -2,6 +2,7 @@ FROM jenkins/jenkins:latest
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV CERT_FOLDER "$JENKINS_HOME/.ssl"
+ENV ROOT_CA ""
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
