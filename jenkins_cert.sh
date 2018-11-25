@@ -21,4 +21,4 @@ if [ ! -z "$ROOT_CA" ]; then
 		echo "file '${ROOT_CA}' does not exist!"
 	fi
 fi
-/sbin/tini -- /usr/local/bin/jenkins.sh
+/usr/local/bin/jenkins.sh
