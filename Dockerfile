@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:latest
+FROM jenkins:latest
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV CERT_FOLDER "$JENKINS_HOME/.ssl"
