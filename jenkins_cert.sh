@@ -9,7 +9,7 @@ if [ ! -f "$CERT_FOLDER/jenkins.pem" ] || [ ! -f "$CERT_FOLDER/jenkins.key" ]; t
         && rm "$CERT_FOLDER/jenkins.csr" 
 fi
 # install custom root ca if configured
-if [ ! -z "$ROOT_CA" ]
+if [ ! -z "$ROOT_CA" ]; then
 	if [ -f "${ROOT_CA}" ]; then
 		if ! keytool -list -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -alias localrootca > /dev/null; then
 			keytool -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias localrootca -file ${ROOT_CA}
