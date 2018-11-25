@@ -24,5 +24,4 @@ RUN chmod +x "/usr/local/bin/jenkins_cert.sh"
 ENV JENKINS_OPTS --httpPort=-1 --httpsPort=8443 --httpsCertificate="$CERT_FOLDER/jenkins.pem" --httpsPrivateKey="$CERT_FOLDER/jenkins.key"
 EXPOSE 8443
 
-USER ${user}
 ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins_cert.sh"]
