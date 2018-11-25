@@ -6,7 +6,7 @@ Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven.
 
 # About the Container
 
-This build is based on [jenkins:latest](https://hub.docker.com/_/jenkins/) with added features:
+This build is based on [jenkins/jenkins:lts](https://github.com/jenkinsci/docker) with added features:
 * HTTPS Secured WEB-UI (4096bit - RSA)
 * OpenJDK 8u72
 
@@ -135,4 +135,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Further Information
 
-For further information on configuring the Image please refer to [jenkins:latest](https://hub.docker.com/_/jenkins/)
+For further information on configuring the Image please refer to [jenkins/jenkins:lts](https://github.com/jenkinsci/docker)
