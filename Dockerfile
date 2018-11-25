@@ -17,8 +17,7 @@ RUN apt-get update && apt-get upgrade -y \
 	
 # SSL Setup
 ADD jenkins_cert.sh /usr/local/bin/jenkins_cert.sh
-RUN chmod +x "/usr/local/bin/jenkins_cert.sh" \
-	&& chown ${uid}:${gid} /etc/ssl/certs/java/cacerts
+RUN chmod +x "/usr/local/bin/jenkins_cert.sh"
 ENV JENKINS_OPTS --httpPort=-1 --httpsPort=8443 --httpsCertificate="$CERT_FOLDER/jenkins.pem" --httpsPrivateKey="$CERT_FOLDER/jenkins.key"
 EXPOSE 8443
 
