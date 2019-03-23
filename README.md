@@ -2,7 +2,7 @@
 Docker Container - Jenkins HTTPS secured Web-UI, Oracle Java 8, Maven.
 [GitHub repo](https://github.com/t4skforce/jenkins-ssl)
 
-[![](https://badge.imagelayers.io/t4skforce/jenkins-ssl:latest.svg)](https://imagelayers.io/?images=t4skforce/jenkins-ssl:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/t4skforce/jenkins-ssl.svg)](http://microbadger.com/images/t4skforce/jenkins-ssl "Get your own image badge on microbadger.com") [![](https://img.shields.io/docker/automated/t4skforce/jenkins-ssl.svg)](https://cloud.docker.com/repository/docker/t4skforce/jenkins-ssl) [![](https://img.shields.io/docker/build/t4skforce/jenkins-ssl.svg)](https://cloud.docker.com/repository/docker/t4skforce/jenkins-ssl) [![](https://images.microbadger.com/badges/version/t4skforce/jenkins-ssl.svg)](http://microbadger.com/images/t4skforce/jenkins-ssl "Get your own version badge on microbadger.com") [![](https://img.shields.io/docker/pulls/t4skforce/jenkins-ssl.svg)](https://cloud.docker.com/repository/docker/t4skforce/jenkins-ssl) [![](https://img.shields.io/docker/stars/t4skforce/jenkins-ssl.svg)](https://cloud.docker.com/repository/docker/t4skforce/jenkins-ssl) [![](https://img.shields.io/github/last-commit/t4skforce/jenkins-ssl.svg)](https://github.com/t4skforce/jenkins-ssl) [![](https://img.shields.io/maintenance/yes/2019.svg)](https://github.com/t4skforce/jenkins-ssl) [![](https://img.shields.io/github/issues-raw/t4skforce/jenkins-ssl.svg)](https://github.com/t4skforce/jenkins-ssl/issues) [![](https://img.shields.io/github/issues-pr-raw/t4skforce/jenkins-ssl.svg)](https://github.com/t4skforce/jenkins-ssl/pulls)
 
 # About the Container
 
