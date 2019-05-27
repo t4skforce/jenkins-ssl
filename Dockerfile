@@ -14,6 +14,7 @@ RUN apt-get update && apt-get upgrade -y \
 	&& apt-get install -y curl openssl ca-certificates \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -f /var/cache/apt/*.bin
+	&& ln -s $(which java) /usr/bin/java && echo "symlinked java" || echo "java installed"
 	
 # SSL Setup
 ADD jenkins_cert.sh /usr/local/bin/jenkins_cert.sh
