@@ -27,4 +27,8 @@ if [ ! -z "$ROOT_CA" ]; then
 		echo "file '${ROOT_CA}' does not exist!"
 	fi
 fi
+if [ ! -f "/usr/bin/java" ]; then
+	ln -s $(which java) /usr/bin/java
+fi
+
 su -c '/usr/local/bin/jenkins.sh' jenkins -- "$@"
