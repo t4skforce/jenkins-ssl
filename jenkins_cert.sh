@@ -12,6 +12,7 @@ fi
 # install custom root ca if configured
 if [ ! -z "$ROOT_CA" ]; then
 	if [ -f "${ROOT_CA}" ]; then
+		mkdir -p /etc/ssl/certs/java
 		if ! keytool -list -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -alias localrootca > /dev/null; then
 			keytool -keystore /etc/ssl/certs/java/cacerts -storepass changeit -noprompt -trustcacerts -importcert -alias localrootca -file ${ROOT_CA}
 			echo "CA '${ROOT_CA}' installed successfully."
