@@ -1,6 +1,6 @@
 FROM jenkins/jenkins:latest
 
-ARG BUILD_DATE=""
+ARG BUILD_DATE="20211004"
 ENV JENKINS_HOME /var/jenkins_home
 ENV CERT_FOLDER "$JENKINS_HOME/.ssl"
 ENV ROOT_CA ""
